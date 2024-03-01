@@ -1,0 +1,16 @@
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        let a = prompt("escolha um número")
+        a = String(a).split('').reverse()
+        let b = prompt("escolha outro número");
+        b = String(b).split('').reverse()
+        
+        const x = 0
+        
+        let count = numbers.slice(a[x])
+        count = count.concat(numbers.slice(0, a[x]))
+        console.log(count)
+        
+        const unit = count[b[0]]
+        console.log(unit)
+
+        if (unit < a) {
