@@ -14,8 +14,7 @@ public class Conversion
    		Console.WriteLine("•_•");
    	}
     	
-   	static void ByToDec() 
-   	{
+   	static void ByToDec() {
 	    Console.WriteLine("type a binary number");
 	    int binary = Convert.ToInt32(Console.ReadLine());
         List<int> bitList = new List<int>();
