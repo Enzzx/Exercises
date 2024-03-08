@@ -30,14 +30,16 @@ def cryptograph():
             package_indices[i % len(package_indices)] += tooth
             i+=1
     
-        i = 0
-        for packNum in package_indices:
-            binary = bin(packNum)
-            binary = binary[2:]
-            binary = binary[len(binary)//2:]+binary[0:len(binary)//2]
-            package_indices[i] = rValues[int(binary, 2)]
-            i+=1
-            print("iterou o " + str(i))
+        for i, packNum in enumerate(package_indices):
+            try:
+                binary = bin(packNum)
+                binary = binary[2:]
+                binary = binary[len(binary)//2:]+binary[0:len(binary)//2]
+                package_indices[i] = rValues[int(binary, 2)]
+                print("iterou o " + str(i))
+            except:
+                print("o elemento " + str(i) + " não foi iterado")
+                
         print(package_indices)
         encripted.extend(package_indices)
     print(encripted)
