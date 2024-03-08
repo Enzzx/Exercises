@@ -1,40 +1,5 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-/*
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-camera.position.set(0, 0, 50);
-
-// CRIANDO CUBO
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-);
-scene.add(cube);
-
-function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
-    renderer.render(scene, camera);
-}
-animate();
-*/
-
-
-
-
-
-
-
-/*
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-*/
 
 //CRIANDO O CENÁRIO - - - - - - - - - - - - - -
 const scene = new THREE.Scene();
@@ -107,14 +72,6 @@ spaceBg.wrapS = THREE.RepeatWrapping;
 spaceBg.wrapT = THREE.RepeatWrapping;
 spaceBg.repeat.set( 1, 4 );
 scene.background = spaceBg;*/
-
-/*const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85)
-const renderPass = new RenderPass(scene, camera)
-
-const composer = new EffectComposer(renderer)
-composer.setSize(window.innerWidth, window.innerHeight);
-composer.addPass(renderPass)
-composer.addPass(bloomPass)*/
 
 let angle = 0
 function animate() {
