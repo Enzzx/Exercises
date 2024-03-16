@@ -28,8 +28,8 @@ async function main() {
 function hardSum(a, b) {
   let add1 = false;
   const result = [];
-  const loopies = b.length;
-  for (let i = 0; i < loopies; i++) {
+  //const loopies = b.length;
+  while (b.length !== 0) {
     let count = numbers.slice(a[0]);
     count = count.concat(numbers.slice(0, a[0]));
     count = add1 ? count.slice(1) : count;
