@@ -1,3 +1,4 @@
+#tentativa de fazer um círculo perfeito no site https://neal.fun/perfect-circle/
 import pyautogui
 import math
 import time

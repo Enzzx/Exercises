@@ -1,3 +1,4 @@
+#descubra  o número
 import random
 rNum = random.randint(1,100)
 attempts = 7

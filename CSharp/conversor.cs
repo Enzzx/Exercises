@@ -1,3 +1,4 @@
+//converte decimal pra binário e binário pra decimal
 using System;
 using System.Collections.Generic;
 
@@ -19,16 +20,14 @@ public class Conversion
 	    int binary = Convert.ToInt32(Console.ReadLine());
         List<int> bitList = new List<int>();
 	       
-	    while(binary > 0)
-	    {
+	    while(binary > 0) {
             int value = binary % 10;
             bitList.Insert(bitList.Count, value);
             binary /= 10;
         }
 	       
         int dcimal = 0;
-        for (int i = 0; i < bitList.Count; i++)
-        {
+        for (int i = 0; i < bitList.Count; i++) {
 	       dcimal += (int)Math.Pow(2, i) * bitList[i];
 	    }
         Console.WriteLine($"the binary values is: {dcimal}");
@@ -39,8 +38,7 @@ public class Conversion
     	int dcimal = Convert.ToInt32(Console.ReadLine());
     	string bits = "";
     	
-    	while (dcimal > 1)
-    	{
+    	while (dcimal > 1) {
     		int rest = dcimal % 2;
     		dcimal = dcimal / 2;
     		bits = Convert.ToString(rest) + bits;
