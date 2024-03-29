@@ -34,14 +34,10 @@ def cryptograph():
         for i, packNum in enumerate(package_indices):
             try:
                 binary = bin(packNum)
-                binary = binary[2:]
-                binary = binary[len(binary)//2:]+binary[0:len(binary)//2]
-
-                if len(key_indices) > 10:
-                    package_indices[i] = rValues[int(binary, 2) // (len(key_indices) // 10) + 2]
-                else:
-                    package_indices[i] = rValues[int(binary, 2)]
-
+                binary = int(binary[2:], 2)
+                #binary = binary[len(binary)//2:]+binary[0:len(binary)//2]
+                
+                package_indices[i] = rValues[binary // 38] + rValues[binary % 38]
                 print("iterou o " + str(i))
             except:
                 print("o elemento " + str(i) + " não foi iterado")
