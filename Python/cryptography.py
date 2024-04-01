@@ -26,7 +26,7 @@ def cryptograph():
         key_indices = [rValues.index(value) for value in key]
         package_indices = [rValues.index(value) for value in package]
     
-        i  = 0
+        i = 0
         for tooth in key_indices:
             package_indices[i % len(package_indices)] += tooth
             i+=1
@@ -37,12 +37,13 @@ def cryptograph():
                 binary = int(binary[2:], 2)
                 #binary = binary[len(binary)//2:]+binary[0:len(binary)//2]
                 
-                package_indices[i] = rValues[binary // 38] + rValues[binary % 38]
+                package_indices[i] = rValues[binary // 38 - 1] + rValues[binary % 38]
                 print("iterou o " + str(i))
             except:
-                print("o elemento " + str(i) + " não foi iterado")
+                print("o " + str(i) + " não foi iterado")
                 
         print(package_indices)
         encripted.extend(package_indices)
+    encripted= ":".join(encripted)
     print(encripted)
 cryptograph()
