@@ -1,7 +1,10 @@
 #cria uma criptografia e descriptografia
-rValues = ['b', '4', 'g', 'h', 'a', 'i', '6', 'r', 'd', 'k', 'e', '7', 'j', '5', " ", 'n', 'f', 'c', '9', '0', 't', 'x', '3', 'q', 'm', 'z', '2', 'l', 'o', "ç", '8', 's', 'u', 'v', 'p', 'w', 'y', 'l']
 
+import random
+import string
+soup = string.printable
 
+"""
 def cryptograph():
     print("informe a chave:")
     listKey = list(input())
@@ -47,3 +50,54 @@ def cryptograph():
     encripted= ":".join(encripted)
     print(encripted)
 cryptograph()
+"""
+
+def encrypt():
+    print("você possui uma chave? (S/n)")
+    hasKey = input().lower()
+    key = None
+    
+    if hasKey == "s":
+        print("insira a chave:")
+        key = input()
+        if len(key) != 20:
+            return crypt()
+    elif hasKey == "n":
+        caracteres = string.ascii_letters + string.digits
+        key = "".join(random.choice(caracteres) for _ in range(18))
+        key = "".join(random.choice(string.digits) for _ in range(2)) + key
+        print("sua chave é: " + key)
+    else:
+        return crypt()
+    
+    print("insira a senha a ser criptografada:")
+    psswrd = input()
+    psswrd = [char for char in psswrd]
+    key = [char for char in key]
+    keyData = key[0:2]
+    key = key[2:]
+
+    while len(psswrd) > 0:
+        package = psswrd[0:4]
+        psswrd = psswrd[4:]
+        package_indices = [soup.index(value) for value in package]
+        key_indices = [soup.index(value) for value in key]
+
+        for _ in range(int("".join(keyData))):
+            i = 0
+            for tooth in key_indices:
+                package_indices[i % len(package_indices)] += tooth
+                i+=1
+
+        print(package_indices)
+
+
+
+print("digite 1 para criptografar e 2 para descriptografar:")
+crypt = int(input())
+if crypt == 1:
+    encrypt()
+elif crypt == 2:
+    decrypt()
+else:
+    print("vai se foder")
