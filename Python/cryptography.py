@@ -74,9 +74,10 @@ def encrypt():
     psswrd = input()
     psswrd = [char for char in psswrd]
     key = [char for char in key]
-    keyData = key[0:2]
+    keyData = "".join(key[0:2])
     key = key[2:]
 
+    encrypted = ""
     while len(psswrd) > 0:
         package = psswrd[0:4]
         psswrd = psswrd[4:]
@@ -89,11 +90,25 @@ def encrypt():
                 package_indices[i % len(package_indices)] += tooth
                 i+=1
 
-        print(package_indices)
+        for item in package_indices:
+            encrypted += hex(item//62) + soup[item%62]
 
+        encrypted = encrypted.replace("0x", ":")
+        #print(package_indices)
+    
+    print(encrypted)
+    """random.seed(int(keyData))
+    encrypted_list = list(encrypted)
+    random.shuffle(encrypted_list)
+    encrypted = "".join(encrypted_list)
+    print(encrypted)
+    random.seed(int(keyData))
+    encrypted_list = list(encrypted)
+    random.shuffle(encrypted_list)
+    encrypted = "".join(encrypted_list)
+    print(encrypted)"""
 
-
-print("digite 1 para criptografar e 2 para descriptografar:")
+print("digite 1 para criptografar ou 2 para descriptografar:")
 crypt = int(input())
 if crypt == 1:
     encrypt()
