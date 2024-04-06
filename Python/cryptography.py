@@ -1,62 +1,14 @@
-#cria uma criptografia e descriptografia
-
+#algoritmo de criptografia
 import random
 import string
 soup = string.printable
-
-"""
-def cryptograph():
-    print("informe a chave:")
-    listKey = list(input())
-    key = []
-    for item in listKey:
-        key.append(item)
-    print(key)
-
-    print("informe a senha:")
-    listPass = list(input())
-    psswrd = []
-    for psw in listPass:
-        psswrd.append(psw)
-    print(psswrd)
-    
-    encripted = []
-
-    while len(psswrd) > 0:
-        package = psswrd[:4]
-        psswrd = psswrd[4:]
-    
-        key_indices = [rValues.index(value) for value in key]
-        package_indices = [rValues.index(value) for value in package]
-    
-        i = 0
-        for tooth in key_indices:
-            package_indices[i % len(package_indices)] += tooth
-            i+=1
-    
-        for i, packNum in enumerate(package_indices):
-            try:
-                binary = bin(packNum)
-                binary = int(binary[2:], 2)
-                #binary = binary[len(binary)//2:]+binary[0:len(binary)//2]
-                
-                package_indices[i] = rValues[binary // 38 - 1] + rValues[binary % 38]
-                print("iterou o " + str(i))
-            except:
-                print("o " + str(i) + " não foi iterado")
-                
-        print(package_indices)
-        encripted.extend(package_indices)
-    encripted= ":".join(encripted)
-    print(encripted)
-cryptograph()
-"""
 
 def encrypt():
     print("você possui uma chave? (S/n)")
     hasKey = input().lower()
     key = None
     
+    #pegando dados
     if hasKey == "s":
         print("insira a chave:")
         key = input()
@@ -77,6 +29,8 @@ def encrypt():
     keyData = "".join(key[0:2])
     key = key[2:]
 
+
+    #separar a senha em grupos de 4 valores e iterar o index de cada caractere da chave keyData vezes
     encrypted = ""
     while len(psswrd) > 0:
         package = psswrd[0:4]
@@ -84,29 +38,49 @@ def encrypt():
         package_indices = [soup.index(value) for value in package]
         key_indices = [soup.index(value) for value in key]
 
-        for _ in range(int("".join(keyData))):
-            i = 0
-            for tooth in key_indices:
+        for _ in range(int(keyData)):
+            for i, tooth in enumerate(key_indices):
                 package_indices[i % len(package_indices)] += tooth
-                i+=1
 
+        #criar um hex da divisão de cada valor por 62 + o resto 
         for item in package_indices:
             encrypted += hex(item//62) + soup[item%62]
 
         encrypted = encrypted.replace("0x", ":")
-        #print(package_indices)
     
-    print(encrypted)
-    """random.seed(int(keyData))
-    encrypted_list = list(encrypted)
-    random.shuffle(encrypted_list)
-    encrypted = "".join(encrypted_list)
-    print(encrypted)
-    random.seed(int(keyData))
-    encrypted_list = list(encrypted)
-    random.shuffle(encrypted_list)
-    encrypted = "".join(encrypted_list)
-    print(encrypted)"""
+    print(encrypted[1:])
+
+def decrypt():
+    #pegando dados
+    print("passe a chave:")
+    key = input()
+    print("passe a senha encriptada:")
+    psswrd = input()
+    key = [char for char in key]
+    psswrd = psswrd.split(":")
+    keyData = "".join(key[0:2])
+    key = key[2:]
+
+    #recuperando o número somando o hex * 62 + resto de cada valor
+    for i, value in enumerate(psswrd):
+        hexa = value[:len(value) -1]
+        bit = value[len(value) -1]
+
+        psswrd[i] = int(hexa, 16) * 62 + soup.index(bit)
+
+    #fazendo o processo contrário da linha 33
+    decrypted = []
+    while len(psswrd) > 0:
+        package = psswrd[0:4]
+        psswrd = psswrd[4:]
+        key_indices = [soup.index(value) for value in key]
+
+        for _ in range(int(keyData)):
+            for i, tooth in enumerate(key_indices):
+                package[i % len(package)] -= tooth
+
+        decrypted += [soup[value] for value in package]
+    print("".join(decrypted))
 
 print("digite 1 para criptografar ou 2 para descriptografar:")
 crypt = int(input())
@@ -115,4 +89,4 @@ if crypt == 1:
 elif crypt == 2:
     decrypt()
 else:
-    print("vai se foder")
+    print("beleeeza")
