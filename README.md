@@ -1,3 +1,3 @@
 # Exercises
 
-Some short exercises to practice diferent programming languages that i can be or not studying
+Different types of challenges and exercises to practice some programming languages that i can be or not studying
