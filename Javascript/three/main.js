@@ -63,15 +63,7 @@ for (let i = 0; i < 700; i++) {
 //ADICIONANDO LUZ - - - - - - - - - - - - - - - -
 const pointLight = new THREE.PointLight("lightyellow", 100000)
 const lightHelper = new THREE.PointLightHelper(pointLight)
-//const ambientLight = new THREE.AmbientLight(0xffffff)
-//const gridHelper = new THREE.GridHelper(1000, 50)
-
 scene.add(pointLight, lightHelper)
-/*const spaceBg = new THREE.TextureLoader().load('space.jpeg');
-spaceBg.wrapS = THREE.RepeatWrapping;
-spaceBg.wrapT = THREE.RepeatWrapping;
-spaceBg.repeat.set( 1, 4 );
-scene.background = spaceBg;*/
 
 let angle = 0
 function animate() {
