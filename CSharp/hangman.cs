@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Jogo
 {
-    class JogoDaForca
+    class HangmanGame
     {
         char[] answerArr = "cavalo".ToCharArray();
         List<char> guessedLetters = [];
@@ -49,7 +49,7 @@ namespace Jogo
             return true;
         }
 
-        public void startGame()
+        public void StartGame()
         {
             bool isRunning = true;
             while (isRunning)
@@ -91,6 +91,12 @@ namespace Jogo
             {
                 Console.WriteLine("perdeu");
             }
+        }
+
+        static void Main()
+        {
+            HangmanGame game = new HangmanGame();
+            game.StartGame();
         }
     }
 }
